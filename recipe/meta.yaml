@@ -14,15 +14,15 @@ build:
     - arxiv2bib = arxiv2bib:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -32,6 +32,7 @@ test:
     - arxiv2bib --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://nathangrigg.github.io/arxiv2bib
